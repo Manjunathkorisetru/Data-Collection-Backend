@@ -9,6 +9,8 @@ Each uploaded image contains a few features that will be annotated on the image.
 - The Upload page ( a CRUD page ) which provides the functionality of uploading the images and annotating the specified features for each. It also provides the preview of the images and their features.
 - A login page that asks for authentication
 - The user profile, which summarize the information of the user as well as the role of the user. The user information can also be updated.
+- A Search field in the Dashboard to filter data sets by text features
+- The web app is responsive across four breakpoints: 640px (sm), 768px (md), 1024px (lg), 1280px (xl)
 
  
 
@@ -16,7 +18,7 @@ Each uploaded image contains a few features that will be annotated on the image.
 
 - **Frontend:** React.js, TypeScript, HTML, CSS, TailwindCSS
 - **Backend:** Node.js, Express.js, Mongoose
-- **Database:** MongoDB
+- **Database:** MongoDB Cloud (https://cloud.mongodb.com/)
 - **Build Tools:** Vite
 - **Package Manager:** npm
 - **Version Control:** Git, GitHub
@@ -67,7 +69,40 @@ Before you begin, ensure you have met the following requirements:
    require('crypto').randomBytes(64).toString('hex')
    ```
 
+## To Start Server
+To start the development server. Run the following command : 
 
+```bash
+npm start
+```
 
+This will start the server, and will be accessible at http://localhost:3000.
+
+## Database Schema
+
+```bash
+ {
+    email: String,
+    firstName: String,
+    lastName: String,
+    password: String,
+    role: {
+      type: Number,
+      default: 0,
+    },
+    datasets: [
+      {
+        id: String,
+        image: String,
+        features: [
+          {
+            value: { type: String, default: "" },
+            type: { type: String, default: "" },
+          },
+        ],
+      },
+    ],
+  },
+```
 
 
